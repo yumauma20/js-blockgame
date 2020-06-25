@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop</title>
+    <title>js-blockgame</title>
     <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
@@ -19,10 +19,11 @@
   var y = canvas.height-30;
   var dx = 2;
   var dy = -2;
+  var ballRadius = 10;
 
   function drawBall() {
     ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI*2);
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
@@ -33,6 +34,12 @@
     drawBall();
     x += dx;
     y += dy;
+    if(x + dx > canvas.width || x + dx < ballRadius) {
+      dx = -dx;
+    }
+    if(y + dy > canvas.height || y + dy < ballRadius) {
+      dy = -dy;
+    }
   }
   setInterval(draw, 10);
 </script>
