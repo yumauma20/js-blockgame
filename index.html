@@ -13,7 +13,7 @@
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
-  var canvas = document.getElementById("myCanvas");
+var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
 var x = canvas.width/2;
@@ -81,8 +81,7 @@ function collisionDetection() {
           b.status = 0;
           score++;
           if(score == brickRowCount*brickColumnCount) {
-            alert("YOU WIN, CONGRATS!");
-            document.location.reload();
+            setTimeout("drawClear()", 100)
           }
         }
       }
@@ -130,6 +129,11 @@ function drawLives() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "#0095DD";
   ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
+
+function drawClear() {
+  alert("YOU WIN, CONGRATS!");
+  document.location.reload();
 }
 
 function draw() {
